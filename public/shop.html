@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - VortexMc</title>
+  <link rel="stylesheet" href="styles/shop.css">
+</head>
+<body>
+  <header class="central-header">
+    <div class="header-content">
+        <div class="header-left">
+            VortexMc
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="dashboard.html">Dashboard</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="discord-button">
+                <img src="images/discord-icon.png" alt="Discord Icon" />
+                Join Discord
+            </button>
+        </div>
+    </div>
+</header>
+
+  <main class="content">
+    <h1>Store Items</h1>
+    <div class="categories">
+      <button class="category-button" onclick="switchCategory('clouds')">Clouds</button>
+      <button class="category-button" onclick="switchCategory('ranks')">Ranks</button>
+      <button class="category-button" onclick="switchCategory('punishments')">Punishments</button>
+    </div>
+    <div class="shop-grid" id="shopGrid"></div>
+  </main>
+
+  <!-- Buy Modal -->
+  <div id="buyModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('buyModal')">&times;</span>
+      <p id="buyItemName">Buy this item?</p>
+      <button onclick="confirmBuy()">Confirm</button>
+    </div>
+  </div>
+  
+  <!-- View Modal -->
+  <div id="viewModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('viewModal')">&times;</span>
+      <p id="viewItemName">View item details</p>
+    </div>
+  </div>
+  <script src="scripts/shop.js"></script>
+</div>
+</body>
+</html>
