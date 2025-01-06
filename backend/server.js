@@ -4,6 +4,8 @@ const path = require("path");
 const session = require("express-session");
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 const dotenv = require("dotenv");
+const RedisStore = require('connect-redis')(session);
+const Redis = require('ioredis');
 
 dotenv.config();
 
@@ -23,18 +25,17 @@ const EVENT_CHANNEL_ID = "1325628424798343310";
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../docs")));
 
+const redisClient = new Redis();
+
 // Session Middleware
 app.use(
-  session({
-    secret: "your-secret-key",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      secure: false,
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24,
-    }
-  }),
+    session({
+        store: new RedisStore({ client: redisClient }),
+        secret: 'your-secret-key',
+        resave: false,
+        saveUninitialized: false,
+        cookie: { secure: false }, // Set to true if using HTTPS
+    })
 );
 
 // Middleware to check if user is logged in
