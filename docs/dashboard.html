@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <!-- Central Header -->
+    <header class="central-header">
+        <div class="header-content">
+            <div class="header-left">
+                VortexMc
+                <div class="dropdown">
+                    <button class="dropdown-button">Menu</button>
+                    <div class="dropdown-content">
+                        <a href="index.html">Home</a>
+                        <a href="shop.html">Shop</a>
+                        <a href="dashboard.html">Dashboard</a>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <button id="logoutButton" class="btn-primary">Logout</button>
+                <button class="discord-button">
+                    <img src="images/discord-icon.png" alt="Discord Icon" />
+                    Join Discord
+                </button>
+            </div>
+        </div>
+    </header> 
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item active"><span class="icon">👤</span> Account</li>
+                <li class="menu-item">
+                    <a href="purchases.html">
+                      <span class="icon">🔒</span> Purchases
+                    </a>
+                  </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Account Information Section -->
+            <section class="account-info">
+                <h2>Account Information</h2>
+                <div class="info-cards">
+                    <div class="card">
+                        <span class="icon">👤</span>
+                        <p>
+                            <strong>Username</strong><br>
+                            <span id="dashboardUsername">Guest</span>
+                        </p>
+                    </div>                  
+                    <div class="card" id="adminPanelCard">
+                        <span class="icon">👥</span>
+                        <p><strong>Admin Panel</strong><br></p>
+                    </div>                 
+                </div>
+            </section>
+
+            <!-- Manage Your Account Section -->
+<section class="manage-account">
+    <h2>Manage Your Account</h2>
+    <div class="manage-cards">
+        <!-- Account Settings -->
+        <div class="card-group">
+            <h3>Account Settings</h3>
+            <div class="card" onclick="openModal('changePasswordModal')">
+                <span class="icon">🔒</span>
+                <p>Change Password</p>
+            </div>
+            <div class="card" onclick="openModal('changeUsernameModal')">
+                <span class="icon">✏️</span>
+                <p>Change Username</p>
+            </div>
+        </div>
+        <!-- Connections -->
+        <div class="card-group">
+            <h3>Events Page</h3>
+            <div class="card" id="eventsCard">
+                <span class="icon">💬</span>
+                <p>Events<br><span</p>
+            </div>
+        </div>
+        
+                   
+                    <!-- Change Password Modal -->
+<div id="changePasswordModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('changePasswordModal')">&times;</span>
+        <h2>Change Password</h2>
+        <form id="changePasswordForm">
+            <input type="password" id="currentPassword" placeholder="Current Password" required>
+            <input type="password" id="newPassword" placeholder="New Password" required>
+            <input type="password" id="confirmNewPassword" placeholder="Confirm New Password" required>
+            <button type="submit" class="btn-primary">Change Password</button>
+        </form>
+    </div>
+</div>
+
+<!-- Change Username Modal -->
+<div id="changeUsernameModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('changeUsernameModal')">&times;</span>
+        <h2>Change Username</h2>
+        <form id="changeUsernameForm">
+            <input type="text" id="currentUsername" placeholder="Current Username" required>
+            <input type="text" id="newUsername" placeholder="New Username" required>
+            <button type="submit" class="btn-primary">Change Username</button>
+        </form>
+    </div>
+</div>
+</div>
+
+<!-- Admin Modal -->
+<div id="adminModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('adminModal')">&times;</span>
+        <h2>Add Event</h2>
+        <form id="addEventForm">
+            <!-- Title -->
+            <label for="eventTitle">Title:</label><br>
+            <input type="text" id="eventTitle" placeholder="Event Title" required><br><br>
+
+            <!-- Description -->
+            <label for="eventDescription">Description:</label><br>
+            <textarea id="eventDescription" rows="4" placeholder="What's going on?" required></textarea><br><br>
+
+            <!-- Time -->
+            <label for="eventTime">Start Time:</label><br>
+            <input type="text" id="eventTime" placeholder="e.g., 9:00 AM" required><br><br>
+
+            <!-- Location -->
+            <label for="eventLocation">Location:</label><br>
+            <input type="text" id="eventLocation" placeholder="e.g., Online or City Hall" required><br><br>
+
+            <!-- Submit Button -->
+            <button type="submit">Add Event</button>
+        </form>
+    </div>
+</div>
+<script src="scripts/dashboard.js"></script>
+</body>
+</html>
